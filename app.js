@@ -3,10 +3,6 @@ const path = require('path');
 
 const app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
 // essential setup
 app.use(express.json({
   limit: '5mb'

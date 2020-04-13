@@ -6,9 +6,8 @@
 
 - Express.js
 - Multer
-- Other utility modules such as: async, ejs..
+- Other utility modules such as: async, mkdirp..
 
-### Boilerplate Includes:
 
 `boilerplate` includes a simple and straight forward validation to prevent malicious uploads to the 
 server. Features include:
@@ -16,7 +15,7 @@ server. Features include:
 - Single image upload
 - Multiple images upload (array)
 - Files validation (reject non images files)
-- Image format validation (whitelist specific formats e.g: JPEG,PNG)
+- Image format validation (whitelist specific formats e.g: JPEG, PNG)
 - Custom Multer disk storage (post upload actions e.g: compressing)
 
 
@@ -32,6 +31,7 @@ npm start
 ```
 
 
+
 ### cURL Examples
 #### Single image upload
 
@@ -44,6 +44,13 @@ Fire a basic POST / Form request to 127.0.0.1:3030/api/images
 Add up to 10 -configurable- images at once at 127.0.0.1:3030/api/images/multi
 
     curl -F "images=@path/to/local/image" -F "images=@path/to/local/image" http://127.0.0.1:3030/api/images/multi
+
+
+### Postman Example
+<p align="center">
+  <img src="https://i.imgur.com/X1EheW8.png" alt="postman_example"/>
+</p>
+
 
 ## License
 The code is available under the [MIT](http://opensource.org/licenses/MIT) license.
