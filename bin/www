@@ -95,5 +95,6 @@ function onListening() {
   const bind = typeof addr === 'string'
     ? `pipe ${addr}`
     : `port ${addr.port}`;
-  console.log(`application has been started on ${env} env ${bind} \u2600`);
+  console.log(`\napplication has been started on ${env} env ${bind} \u2600`);
+  console.log(`a demo is available at http://localhost:${port}`);
 }

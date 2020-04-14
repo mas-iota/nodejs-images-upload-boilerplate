@@ -18,7 +18,7 @@
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->
 
-<div>
+<section>
   <h3>Single image upload:</h3>
   <form id="single-image-uploader" action="/api/images/">
     <input id="single-image-input" type="file"/>
@@ -28,9 +28,9 @@
   </form>
 
   <div id='single-image-display'></div>
-</div>
+</section>
 
-<div>
+<section>
   <h3>Multiple images upload:</h3>
   <form id="multi-images-uploader" action="/api/images/multi">
     <input id="multi-images-input" type="file" multiple/>
@@ -40,7 +40,13 @@
   </form>
 
   <div id='files-list-display'></div>
-</div>
+</section>
+
+<section style="max-width: 400px; background-color: #dddddd8c;padding: 10px;border: 1px solid #0000002e; margin-top: 10px">
+  <h3>Response:</h3>
+  <div id="response-display">
+  </div>
+</section>
 
 <script src="/js/main.js"></script>
 </body>

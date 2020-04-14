@@ -5,8 +5,7 @@ var multiImgInput = document.getElementById('multi-images-input');
 var singleImgDisplay = document.getElementById('single-image-display');
 var multiImgDisplay = document.getElementById('files-list-display');
 
-var multiImgFormData;
-var singleImgFormData;
+var multiImgFormData, singleImgFormData;
 
 multiForm.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -45,10 +44,6 @@ function renderFileMeta(display, file, index) {
   display.appendChild(fileDisplayEl);
 };
 
-//todo see mdn formData example
-//todo also add how much ms it took to complete
-
-//todo after response singleForm.reset();
 function request(form, url) {
   if (!form) {
     return;
@@ -59,9 +54,24 @@ function request(form, url) {
   xhr.open('POST', url);
   xhr.send(form);
 
-  xhr.addEventListener("load", function (e) {
-    console.log('onload response: ', xhr.response)
-    console.log('onload status: ', xhr.status)
-    console.log('onload statusText: ', xhr.statusText)
-  });
+  xhr.onload = function(oEvent) {
+    var resDisplay = document.getElementById('response-display');
+    var html = '';
+    var response = JSON.parse(xhr.response);
+
+    html += `<p>${xhr.status} ${xhr.statusText}</p>`;
+    html += `<p style="white-space: pre-wrap;">${JSON.stringify(response, null, 4)}</p>`;
+
+    if (xhr.status === 200) {
+      if (response.data.path) {
+        html += `<p><a target="_blank" rel="noopener noreferrer" href="${response.data.path}">Preview</a></p>`
+      } else {
+        response.data.paths.forEach(function(p) {
+          html += `<p><a target="_blank" rel="noopener noreferrer" href="${p}">Preview</a></p>`;
+        });
+      }
+    }
+
+    resDisplay.innerHTML = html;
+  };
 }
